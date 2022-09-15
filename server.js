@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Connecting to database
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://Abhip32:Abhip%4032@cluster0.h2ekc1w.mongodb.net/test";
+var url = "mongodb+srv://Abhip32:password@cluster0.h2ekc1w.mongodb.net/test";
 
 app.post("/getQuestions",(req, res) => {
     console.log("getQuestions")
