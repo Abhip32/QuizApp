@@ -34,7 +34,7 @@ app.post("/getQuestions",(req, res) => {
 
 app.post("/getTestQuestions",(req, res) => {
     let para=req.body.Name;
-    console.log("getTestQuestions")
+    console.log("getTestQuestionss")
     MongoClient.connect(url).then((client) => {
         const connect = client.db("QuizApp");
             
