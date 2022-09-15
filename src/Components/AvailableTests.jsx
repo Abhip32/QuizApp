@@ -14,7 +14,7 @@ function AvailableTests() {
     let navigate = useNavigate();
 
     useEffect(() => {
-      Axios.post(`http://localhost:8000/getQuestions`,{
+      Axios.post(`https://quizapp149.herokuapp.com/getQuestions`,{
     }).then((res) => {
         setQuestionsData(res.data);
 
