@@ -70,7 +70,7 @@ function AvailableTests() {
                       <h4 style={{color: "white", fontWeight:"bolder"}}>QuizID : {item._id}</h4>
                      <h4 style={{color: "white", fontWeight:"bolder"}}>Created by : {item.CreatedBy}</h4> 
                     </Card.Text>
-                    <Button variant="primary" style={{backgroundColor:"black",borderRadius:"20px",width:"10vw",boxShadow:"2px 2px 10px white",fontWeight:"bolder",border: "none"}} onClick={()=>{EnterTest(item.Name)}}>Enter Test</Button>
+                    <Button variant="primary" style={{backgroundColor:"black",borderRadius:"20px",width:"150px",boxShadow:"2px 2px 10px white",fontWeight:"bolder",border: "none"}} onClick={()=>{EnterTest(item.Name)}}>Enter Test</Button>
                 </Card.Body>
              </Card> 
         ))}  
