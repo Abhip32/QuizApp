@@ -7,7 +7,7 @@ function App() {
     let navigate = useNavigate();
     let location=useLocation();
     const [ profile, setProfile ] = useState([]);
-    const clientId = '386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com';
+    const clientId = '316466299912-nr5umh7iho0hsag07864a414fd2kl6hd.apps.googleusercontent.com';
     useEffect(() => {
         const initClient = () => {
             gapi.client.init({
