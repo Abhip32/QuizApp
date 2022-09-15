@@ -94,6 +94,7 @@ function CreateTestPreview() {
                  <h4 style={item[0].Choice=="MCQ" ? {display: 'block'}:{display:'none'}}> Option C : {item[0].optionC}</h4>
                  <h4 style={item[0].Choice=="MCQ" ? {display: 'block'}:{display:'none'}}> Option D : {item[0].optionD}</h4>
                  <h4>Answer :  {item[0].answer}</h4>
+                 <h4>Answer :  {item[0].marks}</h4>
                  <button style={{margin:"20px",color:"black",fontWeight:"bold",fontSize:"15px",padding:"0.6vw",borderRadius:"2vw",width:"150px",boxShadow:"2px 2px 10px blue",fontWeight:"bolder",border: "none",color:"black",backgroundColor:"white"}} onClick={(e)=>Delete(item[0].Problem,item[0].Choice,e)&&e.preventDefault()}>Delete</button>
                  <br/>
 

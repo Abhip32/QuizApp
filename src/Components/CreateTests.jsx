@@ -17,13 +17,21 @@ function CreateTests() {
   const [answer,setAnswer] = useState("");
   const [marks,setMarks] = useState("");
   const [error,setError] = useState(false);
-  const [edit,setEdit]=useState(true);
+  const [zero,setzero]=useState(false);
   var [i,setI]= useState(1);
   const navigate=useNavigate();
   const location=useLocation();
 
   const CreateTest=(e)=>{
-    navigate("/CreateTestPreview",{state:{Paper:Question,name:location.state.name,email:location.state.email}});
+    if(Question.length > 0)
+    {
+      navigate("/CreateTestPreview",{state:{Paper:Question,name:location.state.name,email:location.state.email}});
+      setzero(false);
+    }
+    else
+    {
+      setzero(true);
+    }
     
   }
 
@@ -31,7 +39,7 @@ function CreateTests() {
   const AddMCQQuestion=(e)=>
   {
     e.preventDefault()
-    if(Problem.length > 0&&Choice.length > 0&&optionA.length > 0&&optionB.length > 0&&optionC.length > 0&&optionD.length > 0&&answer.length > 0)
+    if(Problem.length > 0&&Choice.length > 0&&optionA.length > 0&&optionB.length > 0&&optionC.length > 0&&optionD.length > 0&&answer.length > 0&&marks.length > 0)
     {
       que.push({"Problem":Problem,"Choice":Choice,"optionA":optionA,"optionB":optionB,"optionC":optionC,"optionD":optionD,"answer":answer,"name":name,"marks":marks});
       Question.push(que);
@@ -51,7 +59,7 @@ function CreateTests() {
   const AddShortQuestion=(e)=>
   {
     e.preventDefault()
-    if(Problem.length > 0&&answer.length > 0)
+    if(Problem.length > 0&&answer.length > 0&&marks.length>0)
     {
       que.push({"Problem":Problem,"Choice":Choice,"answer":answer,"name":name,"marks":marks});
       Question.push(que);
@@ -131,9 +139,16 @@ function CreateTests() {
         <button style={{margin:"20px",color:"black",fontWeight:"bold",fontSize:"10px",padding:"1vw",borderRadius:"2vw",width:"150px",boxShadow:"2px 2px 10px blue",fontWeight:"bolder",border: "none",color:"black",backgroundColor:"white"}}  type='submit' onClick={(e)=> CreateTest(e)}>Submit </button>
         
       </div>}
-      <h4 style={error == true ? {display: 'block',color:"red"}:{display: 'none'}}>
-        Please Check All fields
-    </h4>
+      <center>
+          <h4 style={error == true ? {display: 'block',color:"red"}:{display: 'none'}}>
+            Please Check All fields
+        </h4>
+
+        <h4 style={zero== true ? {display: 'block',color:"red"}:{display: 'none'}}>
+            Error No Questions Added
+        </h4>
+      </center>
+      
   
 
     </Card>

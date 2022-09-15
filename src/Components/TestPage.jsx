@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Axios from 'axios';
 import { getRoles } from '@testing-library/react';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 function TestPage() {
   const location = useLocation();
@@ -15,7 +17,7 @@ function TestPage() {
   var [question,setQuestion] = useState("");
 
 useEffect(() => {
-  Axios.post(`http://localhost:8000/getTestQuestions`,{
+  Axios.post(`https://quizapp149.herokuapp.com/getTestQuestions`,{
         Name:location.state.name,
     }).then((res) => {
         
@@ -63,7 +65,7 @@ const SubmitTest =(e) =>{
       email:location.state.email,
   })
 
-  navigate("/TestSubmitted",{state:{name:location.state.name,user:location.state.user,email:location.state.email}});
+  navigate("/TestSubmitted",{state:{name:location.state.name,user:location.state.user,email:location.state.email,answers:answer}});
   
  
 }
@@ -82,6 +84,15 @@ const SubmitTest =(e) =>{
         <br/>
       </div>
       <br/>
+
+      {QuestionsData.length === 0&&
+          <center>
+            <Spinner animation="border" role="status">
+                 <span className="visually-hidden">Loading...</span>
+            </Spinner>
+
+          </center>
+        }
           
 
       {QuestionsData.map(item => (  
@@ -104,7 +115,9 @@ const SubmitTest =(e) =>{
         ))}  
 
         <center>
-        <button style={{margin:"40px",color:"black",fontWeight:"bold",fontSize:"20px",padding:"1vw",borderRadius:"2vw",width:"150px",boxShadow:"2px 2px 10px blue",fontWeight:"bolder",border: "none",color:"white",backgroundColor:"black"}} onClick={()=>{SubmitTest()}}>Submit</button>
+          {QuestionsData.length !=0 &&
+              <button style={{margin:"40px",color:"black",fontWeight:"bold",fontSize:"20px",padding:"1vw",borderRadius:"2vw",width:"150px",boxShadow:"2px 2px 10px blue",fontWeight:"bolder",border: "none",color:"white",backgroundColor:"black"}} onClick={()=>{SubmitTest()}}>Submit</button>
+          }
         </center>
         
         

@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import Axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
 
 function AvailableTests() {
     const [QuestionsData, setQuestionsData] = useState([]);
@@ -33,6 +34,7 @@ function AvailableTests() {
     }
   return (
     
+    
     <div>
        <center style={{backgroundImage: `url("https://livewirecbe.com/assets/images/breadcrumbs/2.jpg")`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover',padding:'20px'}}>
        <br/>
@@ -49,6 +51,15 @@ function AvailableTests() {
         <h3 style={{marginLeft:"4vw"}}>No Quiz Available today  ?</h3>
         <h3 style={{marginLeft:"4vw"}}>Sorry</h3>
         </Card>
+
+        {QuestionsData.length === 0&&
+          <center>
+            <Spinner animation="border" role="status">
+                 <span className="visually-hidden">Loading...</span>
+            </Spinner>
+
+          </center>
+        }
         
         {QuestionsData.map(item => (  
              <Card style={{ width: '90vw',margin: '4vw',padding:'1vw',boxShadow: '2px 2px 15px black',borderRadius:'3vw',border: "none",backgroundImage: "linear-gradient(to right, #3f2b96, #4286f4)",color:"white"}}>
