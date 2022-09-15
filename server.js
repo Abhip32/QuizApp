@@ -7,6 +7,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const { useParams } = require("react-router-dom");
 const PORT = process.env.PORT||8000;
+const path = require('path');
 
 const Axios = require("axios");
 var open = require('open');
